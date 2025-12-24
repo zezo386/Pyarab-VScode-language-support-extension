@@ -1,0 +1,77 @@
+{
+	"scopeName": "source.pyarab",
+	"name": "PyArab",
+	"patterns": [
+	  {
+		"include": "#keywords"
+	  },
+	  {
+		"include": "#builtin-functions"
+	  },
+	  {
+		"include": "#operators"
+	  },
+	  {
+		"include": "#strings"
+	  },
+	  {
+		"include": "#comments"
+	  },
+	  {
+		"include": "#numbers"
+	  },
+	  {
+		"include": "#identifiers"
+	  }
+	],
+	"repository": {
+	  "keywords": {
+		"patterns": [{
+		  "name": "keyword.control.pyarab",
+		  "match": "\\b(اجعل|و|أو|ليس|لو|غيرلو|غيرذلك|إذا|كرر|إلى|بخطوة|بينما|عرِّف|انهي|اوقف|اكمل|ارجع|صنف|ذات|يرث|جديد|ثابت|استيراد|لكل|في|جرب|التقط)\\b"
+		}]
+	  },
+	  "builtin-functions": {
+		"patterns": [{
+		  "name": "support.function.pyarab",
+		  "match": "\\b(اطبع|إدخال|إدخال_رقمي|مسح_الشاشة|هل_رقم|هل_نص|هل_قائمة|هل_وظيفة|أضيف|أزيل|أزيد|طول|رقم_صحيح|رقم_عشري|نص|قائمة|قائمة_مميزة)\\b"
+		}]
+	  },
+	  "operators": {
+		"patterns": [{
+		  "name": "keyword.operator.pyarab",
+		  "match": "(\\+|\\-|\\*|\\/|\\%|\\=|\\=\\=|\\!\\=|\\<|\\>|\\<\\=|\\>\\=|\\.)"
+		}]
+	  },
+	  "strings": {
+		"patterns": [{
+		  "name": "string.quoted.double.pyarab",
+		  "begin": "\"",
+		  "end": "\"",
+		  "patterns": [{
+			"name": "constant.character.escape.pyarab",
+			"match": "\\\\."
+		  }]
+		}]
+	  },
+	  "comments": {
+		"patterns": [{
+		  "name": "comment.line.number-sign.pyarab",
+		  "begin": "#",
+		  "end": "$"
+		}]
+	  },
+	  "numbers": {
+		"patterns": [{
+		  "name": "constant.numeric.pyarab",
+		  "match": "\\b([0-9]+(\\.[0-9]+)?)\\b"
+		}]
+	  },
+	  "identifiers": {
+		"patterns": [{
+		  "name": "variable.other.pyarab",
+		  "match": "\\b[ابتثجحخدذرزسشصضطظعغفقكلمنهويأإآىءئؤةلاًٌٍَُِّْـ_؛؟][ابتثجحخدذرزسشصضطظعغفقكلمنهويأإآىءئؤةلاًٌٍَُِّْـ_؛؟0-9]*\\b"
+		}]
+	  }
+	}
+  }
