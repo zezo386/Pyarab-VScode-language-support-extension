@@ -1,0 +1,256 @@
+{
+  "name": "pyarab-runner",
+  "displayName": "PyArab Runner",
+  "description": "Run PyArab language files with interactive terminal support",
+  "version": "1.0.0",
+  "publisher": "your-name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/pyarab-runner"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/pyarab-runner/issues"
+  },
+  "homepage": "https://github.com/yourusername/pyarab-runner#readme",
+  "author": {
+    "name": "Your Name",
+    "email": "your.email@example.com"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "pyarab",
+    "arabic",
+    "programming",
+    "language",
+    "interpreter",
+    "runner"
+  ],
+  "icon": "images/logo.png",
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "activationEvents": [
+    "onLanguage:pyarab",
+    "onCommand:pyarab.runFile",
+    "onCommand:pyarab.setInterpreterPath",
+    "onCommand:pyarab.debugFile"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "pyarab",
+        "aliases": [
+          "PyArab",
+          "pyarab"
+        ],
+        "extensions": [
+          ".pyarab"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "configuration": {
+      "title": "PyArab Runner",
+      "properties": {
+        "pyarab.interpreterPath": {
+          "type": "string",
+          "default": "",
+          "description": "Full path to pyarab.py interpreter file",
+          "scope": "resource",
+          "order": 10
+        },
+        "pyarab.pythonPath": {
+          "type": "string",
+          "default": "python",
+          "description": "Path to Python executable (default: 'python')",
+          "scope": "resource",
+          "order": 20
+        },
+        "pyarab.autoSaveBeforeRun": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically save file before running",
+          "scope": "resource",
+          "order": 30
+        },
+        "pyarab.clearTerminalBeforeRun": {
+          "type": "boolean",
+          "default": true,
+          "description": "Clear terminal before each run",
+          "scope": "resource",
+          "order": 40
+        },
+        "pyarab.showRunNotification": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show notification when starting execution",
+          "scope": "resource",
+          "order": 50
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "pyarab.runFile",
+        "title": "PyArab: Run File",
+        "category": "PyArab",
+        "icon": {
+          "light": "images/run-light.svg",
+          "dark": "images/run-dark.svg"
+        }
+      },
+      {
+        "command": "pyarab.setInterpreterPath",
+        "title": "PyArab: Set Interpreter Path",
+        "category": "PyArab"
+      },
+      {
+        "command": "pyarab.debugFile",
+        "title": "PyArab: Debug File",
+        "category": "PyArab"
+      },
+      {
+        "command": "pyarab.openSettings",
+        "title": "PyArab: Open Settings",
+        "category": "PyArab"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "pyarab.runFile",
+          "group": "navigation",
+          "when": "resourceLangId == pyarab"
+        },
+        {
+          "command": "pyarab.debugFile",
+          "group": "navigation",
+          "when": "resourceLangId == pyarab"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "pyarab.runFile",
+          "group": "navigation",
+          "when": "resourceLangId == pyarab"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "pyarab.runFile",
+          "group": "navigation",
+          "when": "resourceLangId == pyarab"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "pyarab.runFile",
+          "when": "resourceLangId == pyarab"
+        },
+        {
+          "command": "pyarab.setInterpreterPath"
+        },
+        {
+          "command": "pyarab.debugFile"
+        },
+        {
+          "command": "pyarab.openSettings"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "pyarab.runFile",
+          "when": "view == pyarabRunner",
+          "group": "navigation"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "pyarab.runFile",
+        "key": "ctrl+f5",
+        "mac": "cmd+f5",
+        "when": "editorLangId == pyarab"
+      },
+      {
+        "command": "pyarab.debugFile",
+        "key": "ctrl+shift+f5",
+        "mac": "cmd+shift+f5",
+        "when": "editorLangId == pyarab"
+      }
+    ],
+    "views": {
+      "explorer": [
+        {
+          "id": "pyarabRunner",
+          "name": "PyArab Runner",
+          "when": "workspaceHas:*.pyarab"
+        }
+      ]
+    },
+    "snippets": [
+      {
+        "language": "pyarab",
+        "path": "./snippets/pyarab.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pyarab",
+        "scopeName": "source.pyarab",
+        "path": "./syntaxes/pyarab.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "echo 'No build step required for JavaScript extension'",
+    "compile": "echo 'No compilation required'",
+    "watch": "echo 'No watch task required'",
+    "pretest": "npm run compile",
+    "test": "node ./test/runTest.js",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^16.0.0"
+  },
+  "dependencies": {},
+  "extensionDependencies": [],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "maintainers": [
+    "Your Name <your.email@example.com>"
+  ],
+  "contributes.viewsContainers": {
+    "activitybar": [
+      {
+        "id": "pyarab-activity",
+        "title": "PyArab",
+        "icon": "images/logo.svg"
+      }
+    ]
+  },
+  "contributes.views": {
+    "pyarab-activity": [
+      {
+        "id": "pyarab-runner-view",
+        "name": "Runner",
+        "when": "workspaceHas:*.pyarab"
+      }
+    ]
+  }
+}
